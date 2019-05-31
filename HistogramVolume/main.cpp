@@ -2,35 +2,6 @@
 #include <vector>
 using namespace std;
 
-int volumeOfHistogram(vector <int> h){
-    int start= 0;
-    while(h[start] == 0) start++;
-    int end = start;
-    int last = h.size() -1;
-    while(h[last] == 0) last--;
-
-    int water = 0;
-    int prev = end;
-    while(end != last+1){
-        if(h[end] == 0) end++;
-        else {
-            if(h[end] < h[prev]){
-                water += (prev - start) * h[prev];
-                start = prev;
-            } else {
-                if(h[end] < h[start]){
-                    water -= h[end];
-                } else if(h[end] >= h[start]){
-                    water += h[start] * (end - start);
-                }
-            }
-            prev = end;
-            end++;
-        }
-    }
-    return 0;
-
-}
 
 int findIndexMax(vector <int> h, int start, int end){
     int imax = start;
